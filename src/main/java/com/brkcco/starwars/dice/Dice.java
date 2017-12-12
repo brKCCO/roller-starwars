@@ -1,34 +1,40 @@
 package com.brkcco.starwars.dice;
 
 import com.brkcco.starwars.core.BaseDiceEntity;
+import com.brkcco.starwars.roll.Roll;
 
-import java.util.ArrayList;
-import java.util.List;
-import javax.persistence.Entity;
 
-@Entity
 public class Dice extends BaseDiceEntity {
-  private int diceSides;
-  private String rollType;
+  private Integer id;
+  private Integer diceSides;
+  private String diceType;
 
   public Dice(String rollType) {
-    super(rollType);
+
   }
 
-  public int getDiceSides() {
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  public Integer getDiceSides() {
     return diceSides;
   }
 
-  public void setDiceSides(int diceSides) {
+  public void setDiceSides(Integer diceSides) {
     this.diceSides = diceSides;
   }
 
-  public String getRollType() {
-    return rollType;
+  public String getDiceType() {
+    return diceType;
   }
 
-  public void setRollType(String rollType) {
-    this.rollType = rollType;
+  public void setDiceType(String diceType) {
+    this.diceType = diceType;
   }
 }
 

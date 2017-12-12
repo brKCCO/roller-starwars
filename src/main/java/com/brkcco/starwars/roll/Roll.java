@@ -1,39 +1,49 @@
 package com.brkcco.starwars.roll;
 
+import com.brkcco.starwars.core.BaseDiceEntity;
 import com.brkcco.starwars.dice.Dice;
 
 import javax.persistence.Entity;
 
 @Entity
-public class Roll{
+public class Roll extends BaseDiceEntity implements CharSequence {
+  private Integer id;
+  private String rollType;
 
-  public Roll(Dice rollType) {
-    Dice diceRoll = new Dice("standard");
-    diceRoll.getDiceSides();
-    System.out.println(diceRoll);
+  public Integer getId() {
+    return id;
+  }
 
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
+  public String getRollType() {
+    return rollType;
+  }
 
+  public void setRollType(String rollType) {
+    this.rollType = rollType;
+  }
 
+  public Roll(Integer id, String rollType) {
 
-    //ROLL (2) Ten sided die
-    //Die 1 val is 10's digit
-    //Die 2 val is 1's digit
+    this.id = id;
+    this.rollType = rollType;
+  }
 
-    StringBuilder sb = new StringBuilder();
-/*
-    diceRoll.setDiceSides(10);
-    rollDice1 = (Math.random()*(standardDie1.getDiceSides()) + 1);
+  @Override
+  public int length() {
+    return 0;
+  }
 
-    standardDie2.setDiceSides(10);
-    rollDice2 = (Math.random()*(standardDie2.getDiceSides()) + 1);
+  @Override
+  public char charAt(int index) {
+    return 0;
+  }
 
-
-    //concatenate die1 & die2
-    sb.append(rollDice1);
-    sb.append(rollDice2);
-
-    out.printf("You rolled a : %s%n ", sb);
-*/
+  @Override
+  public CharSequence subSequence(int start, int end) {
+    return null;
   }
 }

@@ -1,29 +1,32 @@
 package com.brkcco.starwars.dice;
 
 import com.brkcco.starwars.core.BaseDiceEntity;
-import com.brkcco.starwars.roll.Roll;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 
 public class Dice extends BaseDiceEntity  {
-  private Integer id;
-  private String diceName;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Long id;
+  @OneToMany(mappedBy = "rollname")
+  private String rollName;
+  @OneToMany(mappedBy = "dicesides")
   private Integer diceSides;
   private String diceClass;
 
-  public Dice(Integer id, String diceName, Integer diceSides, String diceClass) {
-    this.id = id;
-    this.diceName = diceName;
+  protected Dice() {super();}
+
+  public Dice(String rollName, Integer diceSides, String diceClass) {
+    this();
+    this.rollName = rollName;
     this.diceSides = diceSides;
     this.diceClass = diceClass;
   }
 
-  public Integer getId() {
-    return id;
-  }
-
-  public void setId(Integer id) {
-    this.id = id;
-  }
 
   public Integer getDiceSides() {
     return diceSides;
@@ -33,12 +36,12 @@ public class Dice extends BaseDiceEntity  {
     this.diceSides = diceSides;
   }
 
-  public String getDiceName() {
-    return diceName;
+  public String getRollName() {
+    return rollName;
   }
 
-  public void setDiceName(String diceName) {
-    this.diceName = diceName;
+  public void setRollName(String rollName) {
+    this.rollName = rollName;
   }
 
   public String getDiceClass() {

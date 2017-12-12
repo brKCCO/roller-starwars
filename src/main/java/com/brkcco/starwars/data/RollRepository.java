@@ -1,5 +1,6 @@
-package com.brkcco.starwars.roll;
+package com.brkcco.starwars.data;
 
+import com.brkcco.starwars.roll.Roll;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -9,14 +10,14 @@ import java.util.List;
 public class RollRepository {
   private static final List<Roll> ROLL_TYPES = Arrays.asList(
 
-      new Roll(1,"standard"),
-      new Roll(2, "boost"),
-      new Roll(3, "ability"),
-      new Roll(4,"proficiency"),
-      new Roll(5,"setback"),
-      new Roll(6,"difficulty"),
-      new Roll(7,"challenge"),
-      new Roll(8,"force")
+      new Roll(1,"standard", 10, " "),
+      new Roll(2,"boost", 6, " "),
+      new Roll(5,"setback",6, " "),
+      new Roll(3,"ability", 8, " "),
+      new Roll(6,"difficulty", 8, " "),
+      new Roll(4,"proficiency", 12, " "),
+      new Roll(7,"challenge", 12, " "),
+      new Roll(8,"force", 12, " ")
   );
   public List<Roll> getAllRollTypes() {return ROLL_TYPES;}
 
@@ -31,7 +32,7 @@ public class RollRepository {
 
   public Roll findByRollType(String rollTyple) {
     for(Roll roll: ROLL_TYPES) {
-      if (roll.getRollType().contains(roll)) {
+      if (roll.getRollName().contains(roll)) {
         return roll;
       }
     }

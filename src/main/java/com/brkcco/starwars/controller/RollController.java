@@ -7,4 +7,5 @@ import java.util.Random;
 @Controller
 public class RollController {
   private static Random random = new Random();
+
 }

@@ -1,14 +1,40 @@
 package com.brkcco.starwars.roll;
 
 import com.brkcco.starwars.core.BaseDiceEntity;
-import com.brkcco.starwars.dice.Dice;
 
 import javax.persistence.Entity;
 
 @Entity
 public class Roll extends BaseDiceEntity implements CharSequence {
   private Integer id;
-  private String rollType;
+  private String rollName;
+  private Integer diceSides;
+  private String diceFace;
+
+  public Roll() {super();
+  }
+
+  public Roll(Integer id, String rollName, Integer diceSides, String diceFace) {
+
+    this.id = id;
+    this.rollName = rollName;
+  }
+
+  public Integer getDiceSides() {
+    return diceSides;
+  }
+
+  public void setDiceSides(Integer diceSides) {
+    this.diceSides = diceSides;
+  }
+
+  public String getDiceFace() {
+    return diceFace;
+  }
+
+  public void setDiceFace(String diceFace) {
+    this.diceFace = diceFace;
+  }
 
   public Integer getId() {
     return id;
@@ -18,18 +44,12 @@ public class Roll extends BaseDiceEntity implements CharSequence {
     this.id = id;
   }
 
-  public String getRollType() {
-    return rollType;
+  public String getRollName() {
+    return rollName;
   }
 
-  public void setRollType(String rollType) {
-    this.rollType = rollType;
-  }
-
-  public Roll(Integer id, String rollType) {
-
-    this.id = id;
-    this.rollType = rollType;
+  public void setRollName(String rollName) {
+    this.rollName = rollName;
   }
 
   @Override

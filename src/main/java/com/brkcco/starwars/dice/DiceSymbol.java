@@ -1,4 +1,6 @@
 package com.brkcco.starwars.dice;
 
-public class DiceSymbol {
+import javax.persistence.ManyToOne;
+
+public class DiceSymbol extends Dice {
 }

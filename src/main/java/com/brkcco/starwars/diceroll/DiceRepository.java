@@ -1,4 +1,5 @@
-package com.brkcco.starwars.dice;
+package com.brkcco.starwars.diceroll;
+
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Component;
@@ -6,12 +7,15 @@ import org.springframework.stereotype.Component;
 
 @Component
 public interface DiceRepository extends PagingAndSortingRepository<Dice, Long> {
-
   Dice findById(String id);
+  Dice findByDiceName(String diceName);
 
-  Dice findByDiceClass(String diceClass);
-
-  Dice findByRollName(String rollName);
+  default String findByRoll(String dice) {
+    return dice;
+  }
+  default String findByDiceType(String diceType){
+    return diceType;
+  }
 
 }
 

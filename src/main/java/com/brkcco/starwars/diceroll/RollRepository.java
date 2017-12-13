@@ -1,4 +1,4 @@
-package com.brkcco.starwars.roll;
+package com.brkcco.starwars.diceroll;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Component;
@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 public interface RollRepository extends PagingAndSortingRepository<Roll, Long> {
 
   Roll findById(String id);
-  Roll findByResultName(String resultName);
   Roll findByResultType(String resultType);
 
 

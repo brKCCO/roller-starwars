@@ -12,6 +12,7 @@ public class Dice extends BaseDiceEntity  {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
+
   @OneToMany(mappedBy = "rollname")
   private String rollName;
   @OneToMany(mappedBy = "dicesides")
@@ -20,11 +21,21 @@ public class Dice extends BaseDiceEntity  {
 
   protected Dice() {super();}
 
-  public Dice(String rollName, Integer diceSides, String diceClass) {
+  public Dice( String rollName, Integer diceSides, String diceClass) {
     this();
+    this.id = id;
     this.rollName = rollName;
     this.diceSides = diceSides;
     this.diceClass = diceClass;
+  }
+
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
   }
 
 

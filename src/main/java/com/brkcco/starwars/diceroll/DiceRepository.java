@@ -1,26 +1,30 @@
 package com.brkcco.starwars.diceroll;
 
 
+import com.brkcco.starwars.core.DBLoader;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Component;
 
 
 @Component
-public interface DiceRepository extends PagingAndSortingRepository<Dice, Long> {
-  Dice findById(String id);
+@RestResource(rel = "die", path = "dice")
+public interface DiceRepository extends PagingAndSortingRepository<Die, Long> {
 
-  Dice findByDiceName(String diceName);
 
-  default String findByDiceType(String diceType) {
-    return diceType;
+  Die findById(String id);
+
+  Die findByDieName(String dieName);
+
+  default String findByDieType(String dieType) {
+    return dieType;
+  }
+  default String findByDieSides(String dieSides) {
+    return dieSides;
   }
 
-  default String findByResultType(String resultType) {
-    return resultType;
-  }
-
-  default String findByDiceFace(String diceFace) {
-    return diceFace;
+  default String findByDiceFace(String dieFace) {
+    return dieFace;
   }
 
 

@@ -1,11 +1,19 @@
 package com.brkcco.starwars.controller;
 
+import com.brkcco.starwars.diceroll.DiceRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
-import java.util.Random;
 
 @Controller
 public class RollController {
-  private static Random random = new Random();
+  @Autowired
+  private DiceRepository diceRepository;
+
+  /*@RequestMapping("/")
+  public String listRolls(ModelMap modelMap) {
+  }*/
+
+
+
 
 }

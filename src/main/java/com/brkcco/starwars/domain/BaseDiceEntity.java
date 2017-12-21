@@ -1,4 +1,4 @@
-package com.brkcco.starwars.core;
+package com.brkcco.starwars.domain;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

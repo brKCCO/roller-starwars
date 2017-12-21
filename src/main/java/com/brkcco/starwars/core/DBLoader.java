@@ -1,7 +1,7 @@
 package com.brkcco.starwars.core;
 
-import com.brkcco.starwars.diceroll.Die;
-import com.brkcco.starwars.diceroll.DiceRepository;
+import com.brkcco.starwars.domain.Die;
+import com.brkcco.starwars.dao.DiceDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -15,14 +15,9 @@ import java.util.stream.IntStream;
 
 @Component
 public class DBLoader implements ApplicationRunner {
-  @RestResource(rel = "dice", path = "dice")
-  private final DiceRepository diceRepo;
-
   @Autowired
-  public DBLoader(DiceRepository diceRepo) {
-    this.diceRepo = diceRepo;
-  }
-
+  @RestResource
+  private DiceDao diceRepo;
 
 
   @Override

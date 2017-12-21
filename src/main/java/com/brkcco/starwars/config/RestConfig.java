@@ -1,4 +1,4 @@
-package com.brkcco.starwars.core;
+package com.brkcco.starwars.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,7 +1,5 @@
 package com.brkcco.starwars;
 
-import com.brkcco.starwars.domain.Die;
-import com.brkcco.starwars.domain.Roll;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -2,6 +2,7 @@ package com.brkcco.starwars.domain;
 
 import java.io.IOException;
 import java.util.Random;
+import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 public class Roll {

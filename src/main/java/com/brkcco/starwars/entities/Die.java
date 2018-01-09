@@ -1,31 +1,30 @@
-package com.brkcco.starwars.domain;
+package com.brkcco.starwars.entities;
 
 import java.util.Arrays;
 import java.util.Objects;
-import java.util.Random;
-import java.util.stream.IntStream;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
 
 @Entity
-public class Die extends BaseDiceEntity {
-  @Column(nullable = false, unique = true)
+public class Die extends BaseDiceEntity implements java.io.Serializable{
+  @Column( unique = true)
   private String dieName;
-  @Column(nullable = false)
+  @Column
   private Integer dieSides;
-  @Column(nullable = false)
+  @Column
   private String dieType;
-  @Column(nullable = false)
+  @Column
   private String[] dieFace;
-
+  private Integer rollCount;
+  private String result;
 
   protected Die() {
     super();
   }
 
   public Die(String dieName, Integer dieSides, String dieType, String[] dieFace) {
-    super();
+    this();
     this.dieName = dieName;
     this.dieSides = dieSides;
     this.dieType = dieType;
@@ -97,6 +96,8 @@ public class Die extends BaseDiceEntity {
         ", dieType='" + dieType + '\'' +
         '}';
   }
+
+
 
 
 

@@ -1,7 +1,7 @@
 package com.brkcco.starwars.core;
 
-import com.brkcco.starwars.domain.Die;
-import com.brkcco.starwars.dao.DiceDao;
+import com.brkcco.starwars.entities.Die;
+import com.brkcco.starwars.repositories.DieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -17,9 +17,9 @@ import java.util.stream.IntStream;
 public class DBLoader implements ApplicationRunner {
   @Autowired
   @RestResource
-  private DiceDao diceRepo;
+  private DieRepository dieRepository;
 
-
+  //Load Die instances to repository
   @Override
   public void run(ApplicationArguments args) {
     List<Die> ALL_Die = Arrays.asList(
@@ -50,14 +50,14 @@ public class DBLoader implements ApplicationRunner {
             new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "0"}
         ));
 
+    //Load die into allDie and save to diceRepo
     List<Die> allDie = new ArrayList<>();
-
     IntStream.range(0, ALL_Die.size())
         .forEach(i -> {
           Die d = ALL_Die.get(i % ALL_Die.size());
           allDie.add(d);
         });
-    diceRepo.save(allDie);
+    dieRepository.save(allDie);
   }
 
 

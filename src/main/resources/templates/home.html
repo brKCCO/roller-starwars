@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" >
 
-<head>
+<head th:fragment="head(page_title)" lang="en">
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes"/>
     <meta name="description" content="Star Wars Dice Roller"/>
     <meta name="author" content="nerdyITweb"/>
 
@@ -13,54 +13,47 @@
 
     <!-- Custom styles for this template -->
     <link th:href="@{/css/simple-sidebar.css}" rel="stylesheet"/>
+    <link th:href="@{/css/star-wars.css}" rel="stylesheet"/>
+    <link th:href="@{/css/fonts/boba-fonts/Starjedi.ttf}" rel='stylesheet' type='text/css'/>
+
 
     <title>Star Wars  ||  Dice Roller</title>
 </head>
 
-<body>
+<body th:style="'background: url(' + @{/img/star_wars_force_and_destiny.jpg} + ')'">
 
-<div id="wrapper">
+<div id="wrapper" >
 
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li class="sidebar-brand">
                 <a th:href="@{/}">
-                   <span th:text="#{spring.application.name}">App</span>
+                   <span >DICE ROLLER</span>
                 </a>
             </li>
             <li>
-                <a href="#">Dashboard</a>
+                <a href="#">DICE</a>
             </li>
             <li>
-                <a href="#">Shortcuts</a>
+                <a href="#">ABOUT</a>
             </li>
             <li>
-                <a href="#">Overview</a>
-            </li>
-            <li>
-                <a href="#">Events</a>
-            </li>
-            <li>
-                <a href="#">About</a>
-            </li>
-            <li>
-                <a href="#">Services</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
+                <a href="#">CONTACT</a>
             </li>
         </ul>
     </div>
     <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->
-    <div id="page-content-wrapper">
-        <div class="container-fluid">
-            <h1>Simple Sidebar</h1>
-            <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-            <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-            <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
+    <div id="page-content-wrapper " class="text-background" >
+        <div class="container-fluid"  >
+
+            <h1>STAR WARS DICE ROLLER</h1>
+            <p> MAY THE ROLL BE WITH YOU!</p>
+
+            <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">SIDEBAR</a>
+
         </div>
     </div>
     <!-- /#page-content-wrapper -->

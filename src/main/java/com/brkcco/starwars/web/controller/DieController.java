@@ -1,44 +1,47 @@
 package com.brkcco.starwars.web.controller;
 
-import com.brkcco.starwars.dao.DiceDao;
-import com.brkcco.starwars.domain.Die;
-import com.brkcco.starwars.service.DiceNotFoundException;
+import com.brkcco.starwars.entities.Die;
+import com.brkcco.starwars.entities.Roll;
+import com.brkcco.starwars.service.DieService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/dice")
 public class DieController {
   @Autowired
-  private DiceDao diceDao;
+  private DieService dieService;
 
-  @GetMapping
-  public Iterable findAll() {
-    return diceDao.findAll();
+  @SuppressWarnings("unchecked")
+  @GetMapping("/dice")
+  public String listDice(Model model) {
+    List<Die> allDice = dieService.findAll();
+    model.addAttribute("dice", allDice);
+    return "home";
   }
 
-  @GetMapping("/die/{dieName}")
-  public List<Die> findByTitle(@PathVariable String dieName) throws DiceNotFoundException{
-    return diceDao.findByDieName(dieName);
+  // Single GIF page
+  @GetMapping("/dice/{dieName}")
+  public String gifDetails(@PathVariable Long dieName, Model model) {
+    // TODO: Get gif whose id is gifId
+    Die die = null;
+
+    model.addAttribute("die", die);
+    return "die/details";
   }
+  @GetMapping("/dice/{dieName}/roll")
+  public String rollResult(@PathVariable Long dieName, Model model,@RequestParam int rollCount) throws IOException {
+    Die die = dieService.findById(dieName);
+    Roll roll = new Roll(die, rollCount);
+    return roll.getResult();
 
-  @GetMapping("/die/{id}")
-  public Die findOne(@PathVariable long id) {
-    return diceDao.findOne(id);
   }
-
-  @GetMapping("/diesides/{diceSides}")
-  public List<Die> findByDieSides(@PathVariable String dieSides) {
-    return diceDao.findByDieSides(dieSides);
-  }
-
-
-
 
 
 

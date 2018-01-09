@@ -1,13 +1,11 @@
-package com.brkcco.starwars.domain;
+package com.brkcco.starwars.entities;
 
 import java.io.IOException;
 import java.util.Random;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+
 
 public class Roll {
 
-  @ManyToOne
   private Die die;
   private Integer rollCount;
   private String result;
@@ -15,31 +13,27 @@ public class Roll {
   public Roll() {
   }
 
-  public Roll(Die die, Integer rollCount, String result) {
-    this.die = die;
-    this.rollCount = rollCount;
-    this.result = result;
-  }
-
-  public Roll(Die die, Integer rollCount) throws IOException{
+  public Roll(Die die, Integer rollCount) {
     int i;
-    Random random = new Random();
-    StringBuilder sb = new StringBuilder();
-    String[] faces = die.getDieFace();
-    Integer sides = die.getDieSides();
     for (i = 0; i < rollCount; i++) {
+      Random random = new Random();
+      String[] faces = die.getDieFace();
+      Integer sides = die.getDieSides();
+      int index = random.nextInt(die.getDieFace().length)+1;
+
       switch (sides) {
         case 12:
           //read string from array
-          int j = random.nextInt(faces.length);
+          int j = random.nextInt(index);
           //return value of array position
           result = faces[j];
           setResult(result);
           break;
         case 10:
-          int f = random.nextInt(die.getDieSides());
-          int e = random.nextInt(die.getDieSides());
+          int f = random.nextInt(index);
+          int e = random.nextInt(index);
           //concatenate die1 & die2
+          StringBuilder sb = new StringBuilder();
           sb.append(f);
           sb.append(e);
           result = sb.toString();
